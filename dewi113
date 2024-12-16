@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permainan Slot Sederhana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Permainan Slot Sederhana</h1>
+        <div class="slot-machine">
+            <div class="reel" id="reel1"></div>
+            <div class="reel" id="reel2"></div>
+            <div class="reel" id="reel3"></div>
+        </div>
+        <button id="spinButton">Putar</button>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+.slot-machine {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.reel {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-color: white;
+}const symbols = ['🍒', '🍋', '🍊', '🍉', '🍇', '⭐'];
+const spinButton = document.getElementById('spinButton');
+const resultDisplay = document.getElementById('result');
+
+spinButton.addEventListener('click', () => {
+    const reel1 = symbols[Math.floor(Math.random() * symbols.length)];
+    const reel2 = symbols[Math.floor(Math.random() * symbols.length)];
+    const reel3 = symbols[Math.floor(Math.random() * symbols.length)];
+
+    document.getElementById('reel1').innerText = reel1;
+    document.getElementById('reel2').innerText = reel2;
+    document.getElementById('reel3').innerText = reel3;
+
+    if (reel1 === reel2 && reel2 === reel3) {
+        resultDisplay.innerText = 'Selamat! Anda menang!';
+    } else {
+        resultDisplay.innerText = 'Coba lagi!';
+    }
+});
